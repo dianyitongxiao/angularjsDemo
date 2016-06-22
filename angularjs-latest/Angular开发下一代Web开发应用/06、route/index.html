@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+</head>
+<body>
+	XXX
+	<div ng-view></div>
+</body>
+</html>
+
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module('app',['ngRoute']);
+
+function gconfig($routeProvider){
+
+		//还可以通过 $routeParams 来传递参数
+		$routeProvider
+					.when('/',{
+						controller:loginCtrl,
+						templateUrl:'login.html'
+					})
+					.when('/list',{
+						controller:listCtrl,
+						templateUrl:'list.html'
+					})		
+					.otherwise({
+						redirectTo:'/'
+					});
+}
+
+app.config(gconfig);
+ 	
+function loginCtrl($scope){
+	$scope.name = 'login';
+} 	
+
+function listCtrl($scope){
+	$scope.name = 'list';
+}
+	
+</script>

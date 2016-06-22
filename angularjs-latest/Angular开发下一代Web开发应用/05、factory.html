@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+</head>
+<body>
+	<div ng-controller="ctrl">
+		{{name}} {{age}}
+	</div>
+</body>
+</html>
+
+<script src="angular.min.js"></script>
+<script type="text/javascript">
+angular
+	.module('app',[])
+	.factory('person',person) //公共方法放到服务中去
+	.controller('ctrl',function ($scope,person){
+		$scope.name = person.getName();
+		$scope.age = person.getAge();
+	});
+
+	function person(){
+		var person = {};
+		person.getName = function(){
+			return 'abc';
+		};
+		person.getAge = function(){
+			return 12;
+		}
+		return person;
+	}
+</script>
